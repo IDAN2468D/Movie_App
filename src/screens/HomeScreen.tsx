@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Dimensions, ActivityIndicator, ScrollView, StatusBar, FlatList } from 'react-native';
 import { COLORS, SPACING } from '../theme/theme';
 import { upcomingMovies, newPlayingMovies, popularMovies, baseImagePath } from '../api/apicalls';
@@ -40,6 +40,7 @@ const HomeScreen = ({ navigation }: any) => {
     const [nowPlayingMoviesList, setNewPlayingMoviesList] = useState<any>(undefined);
     const [popularMoviesList, setPopularMoviesList] = useState<any>(undefined);
     const [upcomingMoviesList, setUpcomingMoviesList] = useState<any>(undefined);
+
 
     useEffect(() => {
         (async () => {
@@ -117,7 +118,6 @@ const HomeScreen = ({ navigation }: any) => {
                             genre={item.genre_ids.slice(1, 4)}
                             vote_average={item.vote_average}
                             vote_count={item.vote_count}
-                        //shoudlMarginatedAdAround={true}
                         />
                     )
                 }}

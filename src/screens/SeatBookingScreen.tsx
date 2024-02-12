@@ -44,7 +44,7 @@ const generateSeats = (hallNumber: number) => {
                 number: start,
                 taken: Boolean(Math.round(Math.random())),
                 selected: false,
-                hall: hallNumber
+                hall: hallNumber // Add hall number to each seat object
             }
             columnArray.push(seatObject);
             start++
@@ -63,7 +63,7 @@ const generateSeats = (hallNumber: number) => {
     return rowArray;
 };
 
-const SeatBookingScreen = ({ navigation, route }: { navigation: any, route: any, hallIndex: number }) => {
+const SeatBookingScreen = ({ navigation, route }: any) => {
     const [dataArray, setDataArray] = useState<any[]>(generateDate());
     const [selectedDateIndex, setSelectedDateIndex] = useState<any>();
     const [price, setPrice] = useState<number>(0);
@@ -73,7 +73,8 @@ const SeatBookingScreen = ({ navigation, route }: { navigation: any, route: any,
     const [selectedRowIndex, setSelectedRowIndex] = useState<number>(-1);
     const [selectedHallIndex, setSelectedHallIndex] = useState<number>(route.params.hallIndex);
 
-    const selectSeat = (rowIndex: number, subindex: number, num: number, hallIndex: number) => {
+    const selectSeat = (rowIndex: number, subindex: number, num: number) => {
+        const hallIndex = selectedHallIndex;
         if (!twoDSeatArray[rowIndex][subindex].taken) {
             let array: number[] = [...selectedSeatArray];
             let temp = [...twoDSeatArray];
@@ -98,6 +99,7 @@ const SeatBookingScreen = ({ navigation, route }: { navigation: any, route: any,
             setTwoDSeatArray(temp);
 
             console.log(`Seat selected in row ${rowIndex}`);
+            console.log(`Seat selected in hall ${hallIndex}`);
             console.log('hallIndex:', hallIndex);
             setSelectedRowIndex(rowIndex);
             setSelectedHallIndex(hallIndex);
@@ -117,6 +119,7 @@ const SeatBookingScreen = ({ navigation, route }: { navigation: any, route: any,
                     time: timeArray[selectTimeIndex],
                     date: dataArray[selectedDateIndex],
                     row: selectedRowIndex,
+                    hall: selectedHallIndex, // Include hall number in stored ticket
                     ticketImage: route.params.PosterImage,
                     movieIndex: route.params.movieIndex,
                 })
@@ -129,6 +132,7 @@ const SeatBookingScreen = ({ navigation, route }: { navigation: any, route: any,
                 time: timeArray[selectTimeIndex],
                 date: dataArray[selectedDateIndex],
                 row: selectedRowIndex,
+                hall: selectedHallIndex, // Include hall number in navigation
                 ticketImage: route.params.PosterImage,
                 movieIndex: route.params.movieIndex,
             });
@@ -183,7 +187,11 @@ const SeatBookingScreen = ({ navigation, route }: { navigation: any, route: any,
                                                 <TouchableOpacity
                                                     key={subitem.number}
                                                     onPress={() => {
-                                                        selectSeat(index, subindex, subitem.number, selectedHallIndex)
+                                                        selectSeat(
+                                                            index,
+                                                            subindex,
+                                                            subitem.number,
+                                                        )
                                                     }
                                                     }>
                                                     <CustomIcon

@@ -78,7 +78,7 @@ const TicketScreen = ({ navigation, route }: any) => {
                     <View style={styles.titleSeatContainer}>
                         <View style={styles.subtitleContainer}>
                             <Text style={styles.subheading}>Hall</Text>
-                            <Text style={styles.subtitle}>{ticketData?.movieIndex}</Text>
+                            <Text style={styles.subtitle}>{ticketData?.hall}</Text>
                         </View>
                         <View style={styles.subtitleContainer}>
                             <Text style={styles.subheading}>Row</Text>
