@@ -9,6 +9,7 @@ import { CustomIcon } from '../components';
 
 const TicketScreen = ({ navigation, route }: any) => {
     const [ticketData, setTicketData] = useState<any>(route.params);
+
     useEffect(() => {
         (async () => {
             try {
@@ -78,7 +79,7 @@ const TicketScreen = ({ navigation, route }: any) => {
                     <View style={styles.titleSeatContainer}>
                         <View style={styles.subtitleContainer}>
                             <Text style={styles.subheading}>Hall</Text>
-                            <Text style={styles.subtitle}>{ticketData?.hall}</Text>
+                            <Text style={styles.subtitle}></Text>
                         </View>
                         <View style={styles.subtitleContainer}>
                             <Text style={styles.subheading}>Row</Text>

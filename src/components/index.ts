@@ -6,6 +6,7 @@ import MovieCard from '../components/MovieCard'
 import CastCard from './CastCart';
 import ButtonBG from './ButtonBG';
 import SettingComponent from './SettingComponent';
+import useMovieLists from "./useMovieLists";
+import useMovieSearch from './useMovieSearch'
 
-
-export { CategoryHeader, CustomIcon, InputHeader, SubMovieCard, MovieCard, CastCard, ButtonBG, SettingComponent }
+export { CategoryHeader, CustomIcon, InputHeader, SubMovieCard, MovieCard, CastCard, ButtonBG, SettingComponent, useMovieLists, useMovieSearch }

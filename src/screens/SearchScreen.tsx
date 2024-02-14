@@ -2,22 +2,13 @@ import React, { useState } from 'react';
 import { Text, View, StyleSheet, Dimensions, StatusBar, FlatList } from 'react-native';
 import { COLORS, SPACING } from '../theme/theme';
 import { InputHeader, SubMovieCard } from '../components';
-import { baseImagePath, searchMovies } from '../api/apicalls';
+import { baseImagePath } from '../api/apicalls';
+import useMovieSearch from '../components/useMovieSearch';
 
-const { width, height } = Dimensions.get("screen");
+const { width } = Dimensions.get("screen");
 
 const SearchScreen = ({ navigation }: any) => {
-    const [searchList, setSearchList] = useState([]);
-
-    const searchMoviesFunction = async (name: string) => {
-        try {
-            let response = await fetch(searchMovies(name));
-            let json = await response.json()
-            setSearchList(json.results)
-        } catch (error) {
-            console.log("Something went wrong in searchMoviesFunction", error)
-        }
-    }
+    const { searchList, searchMoviesFunction } = useMovieSearch();
 
     return (
         <View style={styles.container}>
@@ -48,6 +39,7 @@ const SearchScreen = ({ navigation }: any) => {
                     )}
                 />
             </View>
+
         </View>
     );
 };
