@@ -7,6 +7,20 @@ import CastCard from './CastCart';
 import ButtonBG from './ButtonBG';
 import SettingComponent from './SettingComponent';
 import useMovieLists from "./useMovieLists";
-import useMovieSearch from './useMovieSearch'
+import useMovieSearch from './useMovieSearch';
+import OnboardingGradient from './OnboardingGradient';
 
-export { CategoryHeader, CustomIcon, InputHeader, SubMovieCard, MovieCard, CastCard, ButtonBG, SettingComponent, useMovieLists, useMovieSearch }
+
+export {
+    CategoryHeader,
+    CustomIcon,
+    InputHeader,
+    SubMovieCard,
+    MovieCard,
+    CastCard,
+    ButtonBG,
+    SettingComponent,
+    useMovieLists,
+    useMovieSearch,
+    OnboardingGradient
+}
