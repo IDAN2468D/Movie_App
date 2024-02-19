@@ -3,17 +3,22 @@ import { ImageBackground, StyleSheet, Text, View, Dimensions, StatusBar } from '
 import LinearGradient from 'react-native-linear-gradient';
 import { COLORS } from '../theme/theme';
 
+
 const OnboardingGradient = (props: any) => {
     return (
         <View>
-
             <ImageBackground
                 source={{ uri: props.imagePath }}
                 style={styles.backgroundImage}
             >
-                <LinearGradient colors={[COLORS.BlackRGB10, COLORS.Black]} style={styles.linearGradient} />
+                <LinearGradient
+                    colors={[COLORS.BlackRGB10, COLORS.Black]}
+                    style={styles.linearGradient}
+                    start={{ x: 2.5, y: 0 }}
+                    end={{ x: 1, y: 1 }}
+                />
                 <View style={styles.textContainer}>
-                    <Text style={styles.title}>{props.title}</Text>
+                    <Text numberOfLines={2} style={styles.title}>{props.title}</Text>
                     <Text style={styles.subtitle}>{props.subtitle}</Text>
                 </View>
             </ImageBackground>
@@ -37,7 +42,7 @@ const styles = StyleSheet.create({
     textContainer: {
         flex: 1,
         marginHorizontal: 20,
-        marginVertical: 50,
+        marginVertical: 30,
         justifyContent: "flex-end",
         alignItems: 'center',
     },

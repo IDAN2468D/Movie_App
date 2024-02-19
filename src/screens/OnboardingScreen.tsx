@@ -3,6 +3,7 @@ import { StatusBar, StyleSheet, View, Image } from 'react-native';
 import Onboarding, { Page } from 'react-native-onboarding-swiper';
 import { OnboardingGradient, useMovieLists } from '../components';
 import { baseImagePath } from '../api/apicalls';
+import { COLORS } from '../theme/theme';
 
 const OnboardingScreen = ({ navigation }: any) => {
     const { nowPlayingMoviesList } = useMovieLists();
@@ -47,11 +48,12 @@ const OnboardingScreen = ({ navigation }: any) => {
 
     return (
         <View style={styles.container}>
-            <StatusBar hidden={true} />
+            <StatusBar translucent hidden={false} backgroundColor="transparent" />
             <Onboarding
                 ref={onboardingRef}
                 pages={onboardingPages}
                 onDone={navigateToHome}
+                onSkip={navigateToHome}
             />
         </View>
     );
